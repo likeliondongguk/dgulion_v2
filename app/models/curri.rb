@@ -1,0 +1,2 @@
+class Curri < ApplicationRecord
+end
