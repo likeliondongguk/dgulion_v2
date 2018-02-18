@@ -1,0 +1,73 @@
+<%= render 'shared/header' %>
+<div class="content-wrap">
+
+  <div id="blog" class="inner-content">
+
+    <section id="page-title" class="inner-section ui-menu-color03">
+      <div class="container-fluid nopadding">
+        <h2 class="font-accident-two-normal color01 uppercase" data-animation-origin="right" data-animation-duration="400" data-animation-delay="100" data-animation-distance="50px">강의 커리큘럼</h2>
+        <h4 class="font-accident-two-bold color01 uppercase subtitle" data-animation-origin="right" data-animation-duration="400" data-animation-delay="200" data-animation-distance="50px">동대 멋사 교육팀이 준비중입니다.</h4>
+        <!-- <p class="small color01" data-animation-origin="right" data-animation-duration="400" data-animation-delay="300" data-animation-distance="50px"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam id metus purus. Ut vulputate, est vel
+        tincidunt mattis, orci neque iaculis lectus, et interdum quam felis vel tortor. Fusce ultrices dui quis nunc dignissim faucibus. Ut ac odio quis nibh viverra fringilla ac id nisi. Suspendisse tincidunt augue quis ligula cursus, non efficitur ligula
+        faucibus. Mauris id neque maximus, tincidunt metus et, sodales nulla. </p> -->
+      </div>
+    </section>
+
+    <!-- Blog Block -->
+    <section class="inner-section " data-section="blog">
+      <div class="row masonry-row">
+
+        <div class="container-fluid text-center">
+
+          <div id="posts" class="row popup-container">
+            <% @curris.each do |curri| %>
+              <div class=" col-md-4 col-sm-6">
+                <div class="item-wrap curri">
+                  <!-- <div class="check red">hot!</div> -->
+                  <figure data-animation-origin="right" data-animation-duration="500" data-animation-delay="300" data-animation-distance="0px">
+                    <img src="<%= image curri %>" class="img-responsive curri-img" alt="img11" />
+                    <figcaption class="text-center">
+                      <div class="post-header">
+                        <h5>
+                          <a href="blogpost.html"><%= curri.title %></a>
+                        </h5>
+                      </div>
+                      <div class="post-entry">
+                        <p><%= curri.desc %></p>
+                      </div>
+                      <div class="post-meta">
+                        <span>by
+                          <a href="#!">교육팀</a>,</span>
+                        <span><%= curri.created_at %></span></div>
+                      <!-- <div class="post-tag pull-left">
+                        <span>
+                          <a href="#branding" data-filter=".branding">Branding</a>,</span>
+                        <span>
+                          <a href="#design" data-filter=".design">Design</a>
+                        </span>
+                      </div> -->
+                      <div class="dividewhite2"></div>
+                      <div class="post-more-link pull-center btn btn-lg btn-lgr-str">
+                        <%= link_to '보러가기', curri %>
+                      </div>
+                      <div class="dividewhite1"></div>
+                    </figcaption>
+                  </figure>
+                </div>
+              </div>
+            <% end %>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- /Blog Block -->
+</div>
+
+<%#= link_to 'Edit', edit_curri_path(curri) %>
+<%#= link_to 'Destroy', curri, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+<%#= link_to 'New Curri', new_curri_path %>

@@ -1777,6 +1777,13 @@ figure.effect-goliath {
   opacity: 0.9 !important; }
 
 /* Isotope Portfolio */
+.curri {
+  border: 1px solid #bdb6b6;
+  border-radius: 20px;
+}
+.curri-img {
+  border-radius: 20px;
+}
 #portfolio .item-wrap, #blog .item-wrap, #portfolio-item-page .item-wrap {
   margin-bottom: 10px; }
 #portfolio .grid, #blog .grid, #portfolio-item-page .grid {

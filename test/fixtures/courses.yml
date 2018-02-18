@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  curri: one
+  user: one
+  position: 1
+  main: false
+  title: MyString
+  video: MyString
+  image: MyString
+  content: MyText
+  deleted_at: 2018-02-18 15:24:47
+
+two:
+  curri: two
+  user: two
+  position: 1
+  main: false
+  title: MyString
+  video: MyString
+  image: MyString
+  content: MyText
+  deleted_at: 2018-02-18 15:24:47
