@@ -1331,6 +1331,7 @@ button, input, select, textarea {
 
 /* Circle Progress */
 /* Vertical Timeline */
+.timeline-img { max-width: 100%;}
 #timeline .btn {
   margin-right: 0; }
 #timeline > div > div .btn-lgr-str {

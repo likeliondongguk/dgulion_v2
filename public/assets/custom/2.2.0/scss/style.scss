@@ -323,7 +323,6 @@
 
 
 /* Vertical Timeline */
-
 #timeline {
   .btn {margin-right: 0;}
   > div > div .btn-lgr-str {  margin-right: 0 !important;  }
@@ -341,10 +340,12 @@
       left: 50%;
       margin-left: -0.5px;
     }
+
     li {
       margin-bottom: 20px;
       position: relative;
       .timeline-photo {  min-height: 250px;  }
+
       .timeline-time {
         padding: 6px 18px;
         position: absolute;
