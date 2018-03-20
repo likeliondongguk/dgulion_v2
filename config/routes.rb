@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users, controllers: {:registrations => "users/registrations",:sessions => "users/sessions" }
   resources :curris
-
+  resources :assignments
   get 'home/index'
+  get 'home/wating'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

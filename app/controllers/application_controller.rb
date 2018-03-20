@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
   # 밑에 거는 active_admin 전용 거부 코드
   def access_denied(exception)
-      redirect_to users_path, notice: exception.message
+      redirect_to user_session_path, notice: exception.message
   end
 
   protected

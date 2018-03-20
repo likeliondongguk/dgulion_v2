@@ -1,0 +1,48 @@
+<%= render "shared/header" %>
+<div class="content-wrap">
+
+  <div id="blogpost" class="inner-content">
+
+    <section id="page-title" class="inner-section" data-animation-origin="right" data-animation-duration="500" data-animation-delay="300" data-animation-distance="25px">
+      <div class="container-fluid nopadding">
+        <h2 class="font-accident-two-normal uppercase"><%= @assignment.title %></h2>
+        <div class="post-meta">
+          <span>by
+            <a href="#!">교육팀</a>,</span>
+          <span><%= @assignment.created_at %></span></div>
+        <!-- <div class="post-tag pull-left">
+          <span>
+            <a>Branding</a>,</span>
+          <span>
+            <a>Design</a></span></div>
+      </div> -->
+    </section>
+
+    <!-- Blog Block -->
+    <section class="inner-section">
+
+      <div class="container-fluid nopadding">
+
+        <img src="/assets/header.png" class="img-responsive">
+
+        <article class="post">
+
+          <div class="dividewhite6"></div>
+            <p><%= @assignment.content %></p>
+
+          <div class="dividewhite4"></div>
+          <hr>
+
+        </article>
+
+      </div>
+      <div class="container-fluid nopadding">
+        <a href="" class="btn btn-lg btn-default pull-left">뒤로 가기</a>
+        <a href="" class="btn btn-lg btn-default pull-right">과제 제출</a>
+      </div>
+    </section>
+    <!-- /Blog Block -->
+
+  </div>
+
+</div>
