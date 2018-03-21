@@ -5,5 +5,5 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-user=User.create(email: 'jongwonno@likelion.org', password: '35115502', password_confirmation: '35115502')
+user=User.create(email: 'jongwonno@likelion.org',name: "노종원", password: '35115502', password_confirmation: '35115502')
 user.add_role :admin

@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users, controllers: {:registrations => "users/registrations",:sessions => "users/sessions" }
   resources :curris
-  resources :assignments
+  resources :assignments do
+    member do
+      post 'submission'
+    end
+  end
   get 'home/index'
   get 'home/wating'
 

@@ -1,5 +1,5 @@
 class AssignmentsController < ApplicationController
-  before_action :set_assignment, only: [:show, :edit, :update, :destroy]
+  before_action :set_assignment, only: [:show, :edit, :update, :destroy, :submission]
 
   # GET /assignments
   # GET /assignments.json
@@ -10,6 +10,7 @@ class AssignmentsController < ApplicationController
   # GET /assignments/1
   # GET /assignments/1.json
   def show
+    @submission = @assignment.submissions.build(user_id: current_user.id) if user_signed_in?
   end
 
   # GET /assignments/new
@@ -60,11 +61,23 @@ class AssignmentsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  def submission
+    @submission = Submission.new(submission_params)
+    @submission.user = current_user
+    @submission.assignment = @assignment
+    puts "wpw"
+    @submission.save
+    redirect_back(fallback_location: root_path)
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_assignment
       @assignment = Assignment.find(params[:id])
+    end
+
+    def submission_params
+      params.require(:submission).permit(:image,:url)
+
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
