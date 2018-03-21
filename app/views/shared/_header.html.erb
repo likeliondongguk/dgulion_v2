@@ -3,7 +3,7 @@
   <section id="top-navigation" class="container-fluid nopadding">
     <div class="row nopadding ident ui-bg-color01">
       <!-- Photo -->
-      <a href="index.html">
+      <a href="/">
         <div class="col-md-5 vc-photo photo-likelion">&nbsp;</div>
       </a>
       <!-- /Photo -->
@@ -14,10 +14,18 @@
             <h1 class="font-accident-two-light">동국대 멋쟁이사자처럼</h1>
           </div>
           <div class="col-md-2 nopadding name-pdf">
-            <a href="<%= new_user_session_path %>" class="hvr-sweep-to-right">
-              <i class="flaticon-profile5" title="로그인"></i>
-              <span class="color25">로그인</span>
-            </a>
+            <% if user_signed_in?%>
+              <a href="<%= destroy_user_session_path %>" class="hvr-sweep-to-right">
+                <i class="flaticon-profile5" title="로그아웃"></i>
+                <span class="color25">로그아웃</span>
+              </a>
+            <% else %>
+              <a href="<%= new_user_session_path %>" class="hvr-sweep-to-right">
+                <i class="flaticon-profile5" title="로그인"></i>
+                <span class="color25">로그인</span>
+              </a>
+            <% end %>
+            
           </div>
         </div>
         <div class="row nopadding position">

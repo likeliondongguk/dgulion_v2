@@ -10,7 +10,14 @@ class AssignmentsController < ApplicationController
   # GET /assignments/1
   # GET /assignments/1.json
   def show
-    @submission = @assignment.submissions.build(user_id: current_user.id) if user_signed_in?
+    if user_signed_in?
+      @submission = @assignment.submissions.build(user_id: current_user.id)
+      @flag = 0
+      if current_user.submissions.exists?(assignment_id: @assignment.id)
+        @flag = 1
+        @submission = current_user.submissions.find_by(assignment_id: @assignment.id)
+      end
+    end
   end
 
   # GET /assignments/new

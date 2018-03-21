@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount ImageUploader::UploadEndpoint => "images/upload"
   root 'home#index'
   ActiveAdmin.routes(self)
   devise_for :users, controllers: {:registrations => "users/registrations",:sessions => "users/sessions" }

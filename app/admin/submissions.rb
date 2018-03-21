@@ -3,6 +3,17 @@ ActiveAdmin.register Submission do
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
 permit_params :assignment,:user, :image_data, :url
+  index do
+    selectable_column
+    id_column
+    column :assignment
+    column :user
+    column :image do |obj|
+      image_tag obj.image.url, class: "thumb" if obj.image_data?
+    end
+    column :url
+    actions
+  end
 #
 # or
 #
