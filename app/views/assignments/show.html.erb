@@ -56,7 +56,13 @@
                 <div class="col-md-6">
                   <p>
                     <label for="">url</label>
-                    <%= f.url_field :url, placeholder: "http://를 추가해주세요." %>
+                    <%= f.url_field :url, placeholder: "url을 적어주세요" %>
+                  </p>
+                </div>
+                <div class="col-md-12">
+                  <p>
+                    <label>내용</label>
+                    <%= f.test_area_field :content, placeholder: "과제에 대한 설명을 적어주세요" %>
                   </p>
                 </div>
               </div>
@@ -97,12 +103,12 @@
                       <div class="col-md-6">
                         <p>
                           <label for="">url</label>
-                          <%= f.text_field :url %>
+                          <%= f.text_field :url, placeholder: "url을 적어주세요" %>
                         </p>
                       </div>
                       <div class="col-md-12">
                         <label>내용</label>
-                        <%= f.test_area_field :content %>
+                        <%= f.test_area_field :content, placeholder: "과제에 대한 설명을 적어주세요" %>
                       </div>
                     </div>
                     <div class="dividewhite2"></div>
