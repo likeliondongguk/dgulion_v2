@@ -1,5 +1,5 @@
 class AssignmentsController < ApplicationController
-  before_action :set_assignment, only: [:show, :edit, :update, :destroy, :submission]
+  before_action :set_assignment, only: [:show, :edit, :update, :destroy, :submission,:destroy_submission]
 
   # GET /assignments
   # GET /assignments.json
@@ -68,6 +68,16 @@ class AssignmentsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def destroy_submission
+    puts @assignment
+    @assignment.submissions.find_by(user_id: current_user.id).destroy
+    respond_to do |format|
+      format.html { redirect_to @assignment, notice: '과제가 성공적으로 삭제되었습니다.' }
+      format.json { head :no_content }
+    end
+  end
+  
   def submission
     @submission = Submission.new(submission_params)
     @submission.user = current_user

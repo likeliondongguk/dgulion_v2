@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :curris
   resources :assignments do
     member do
+      # 수정해야함
+      get 'submission', as: :destroy_submission, action: :destroy_submission
       post 'submission'
     end
   end

@@ -59,16 +59,25 @@
               <p><%= f.submit "과제 제출", class: "btn btn-lg btn-darker" %></p>
             <% end %>
           <% elsif @flag == 1 %>
+          
               <h4 class="font-accident-two-normal uppercase">나의 과제</h4>
-              <%= image_tag @submission.image.url(public: true) %>
+              <% if @submission.image.exists? %>
+                <%= image_tag @submission.image.url %>
+              <% else %>
+                비어있음
+              <% end %>
               <article class="post">
-      
                 <div class="dividewhite6"></div>
-                  <p><%= @submission.url %></p>
-      
+                <div class="btn-group" role="group"> 
+                  <% unless @submission.url.nil? %>
+                    <a href="<%=@submission.url %>" class="btn btn-primary pull-left" target="_blank">url</a>
+                  <% end %>
+                  <%= link_to "삭제", destroy_submission_assignment_path, class: "btn btn-danger pull-left" %>
+                  <a href="<%=@submission.url %>" class="btn btn-warning pull-left">수정</a>
+                </div>
+                 
                 <div class="dividewhite4"></div>
                 <hr>
-      
               </article>
           <% end %>
           
