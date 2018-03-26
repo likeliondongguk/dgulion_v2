@@ -8,7 +8,7 @@
         <h2 class="font-accident-two-normal uppercase"><%= @assignment.title %></h2>
         <div class="post-meta">
           <span>by
-            <a href="#!">교육팀</a>,</span>
+            <a href="#!">교육팀<%= @flag %></a>,</span>
           <span><%= @assignment.created_at %></span></div>
         <!-- <div class="post-tag pull-left">
           <span>
@@ -73,15 +73,34 @@
                     <a href="<%=@submission.url %>" class="btn btn-primary pull-left" target="_blank">url</a>
                   <% end %>
                   <%= link_to "삭제", destroy_submission_assignment_path, class: "btn btn-danger pull-left" %>
-                  <a href="<%=@submission.url %>" class="btn btn-warning pull-left">수정</a>
+                  <a href="<%= edit_submission_assignment_path %>" class="btn btn-warning pull-left">수정</a>
                 </div>
                  
                 <div class="dividewhite4"></div>
                 <hr>
               </article>
+              <% elsif @flag == 2 %>
+                <h4 class="font-accident-two-normal uppercase">과제 수정</h4>
+                  <%= form_for(@submission, url: update_submission_assignment_path) do |f| %>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <p>
+                          <label for="">이미지</label>
+                          <%= f.file_field :image %>
+                        </p>
+                      </div>
+                      <div class="col-md-6">
+                        <p>
+                          <label for="">url</label>
+                          <%= f.text_field :url %>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="dividewhite2"></div>
+                    <p><%= f.submit "과제 제출", class: "btn btn-lg btn-darker" %></p>
+                  <% end %>
+              <% else %>
           <% end %>
-          
-        <% else %>
           <div class="row">
             <div class="col-md-12">
               <a href="<%= new_user_session_path%>" class="btn btn-lg btn-default pull-right">로그인 하세요</a>

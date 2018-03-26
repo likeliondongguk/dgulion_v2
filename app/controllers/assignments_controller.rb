@@ -1,5 +1,5 @@
 class AssignmentsController < ApplicationController
-  before_action :set_assignment, only: [:show, :edit, :update, :destroy, :submission,:destroy_submission]
+  before_action :set_assignment, only: [:show, :edit, :update, :destroy, :submission,:destroy_submission,:edit_submission,:update_submission]
 
   # GET /assignments
   # GET /assignments.json
@@ -82,10 +82,29 @@ class AssignmentsController < ApplicationController
     @submission = Submission.new(submission_params)
     @submission.user = current_user
     @submission.assignment = @assignment
-    puts "wpw"
     @submission.save
     redirect_back(fallback_location: root_path)
   end
+  
+  def edit_submission
+    @submission = @assignment.submissions.find_by(user_id: current_user.id)
+    @flag = 2
+    render 'show'
+  end
+  
+  def update_submission
+    @submission = @assignment.submissions.find_by(user_id: current_user.id)
+    respond_to do |format|
+      if @submission.update(submission_params)
+        format.html { redirect_to @assignment, notice: 'Assignment was successfully updated.' }
+        format.json { render :show, status: :ok, location: @assignment }
+      else
+        format.html { render :edit }
+        format.json { render json: @submission.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_assignment
