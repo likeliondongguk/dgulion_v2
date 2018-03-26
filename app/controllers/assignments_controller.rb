@@ -117,7 +117,7 @@ class AssignmentsController < ApplicationController
     end
 
     def submission_params
-      params.require(:submission).permit(:image,:url,:submission)
+      params.require(:submission).permit(:image,:url,:content)
 
     end
 

@@ -62,7 +62,7 @@
                 <div class="col-md-12">
                   <p>
                     <label>내용</label>
-                    <%= f.test_area_field :content, placeholder: "과제에 대한 설명을 적어주세요" %>
+                    <%= f.text_area :content, placeholder: "과제에 대한 설명을 적어주세요" %>
                   </p>
                 </div>
               </div>
@@ -79,6 +79,7 @@
               <% end %>
               <article class="post">
                 <div class="dividewhite6"></div>
+                <p><%= @submission.content %></p>
                 <div class="btn-group" role="group"> 
                   <% unless @submission.url.nil? %>
                     <a href="<%=@submission.url %>" class="btn btn-primary pull-left" target="_blank">url</a>
@@ -108,7 +109,7 @@
                       </div>
                       <div class="col-md-12">
                         <label>내용</label>
-                        <%= f.test_area_field :content, placeholder: "과제에 대한 설명을 적어주세요" %>
+                        <%= f.text_area :content, placeholder: "과제에 대한 설명을 적어주세요" %>
                       </div>
                     </div>
                     <div class="dividewhite2"></div>
