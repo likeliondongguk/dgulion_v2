@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :assignments do
     member do
       # 수정해야함
+      get 'submissions'
       get 'submission', as: :destroy_submission, action: :destroy_submission
       post 'submission'
       get 'edit_submission', as: :edit_submission, action: :edit_submission

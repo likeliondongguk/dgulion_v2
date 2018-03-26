@@ -3,19 +3,26 @@
 
   <div id="blogpost" class="inner-content">
 
-    <section id="page-title" class="inner-section" data-animation-origin="right" data-animation-duration="500" data-animation-delay="300" data-animation-distance="25px">
+    <section id="page-title" class="inner-section">
       <div class="container-fluid nopadding">
-        <h2 class="font-accident-two-normal uppercase"><%= @assignment.title %></h2>
+        <div class="row">
+          <div class="col-md-6">
+            <h2 class="font-accident-two-normal2 uppercase"><%= @assignment.title %></h2>
+          </div>
+          <div class="col-md-6 ">
+            <a class="btn btn-danger pull-right" href="<%=submissions_assignment_path(@assignment)%>">훔쳐보기</a>
+          </div>
+        </div>
         <div class="post-meta">
           <span>by
-            <a href="#!">교육팀<%= @flag %></a>,</span>
+            <a href="#!">교육팀</a>,</span>
           <span><%= @assignment.created_at %></span></div>
         <!-- <div class="post-tag pull-left">
-          <span>
-            <a>Branding</a>,</span>
-          <span>
-            <a>Design</a></span></div>
-      </div> -->
+      <!--    <span>-->
+      <!--      <a>Branding</a>,</span>-->
+      <!--    <span>-->
+      <!--      <a>Design</a></span></div>-->
+      <!--</div> -->
     </section>
 
     <!-- Blog Block -->
@@ -23,11 +30,9 @@
 
       <div class="container-fluid nopadding">
 
-        <img src="<%= asset_path 'header.png'%>" class="img-responsive">
+        <!--<img src="<%#= asset_path 'header.png'%>" class="img-responsive"> -->
 
         <article class="post">
-
-          <div class="dividewhite6"></div>
             <p><%= @assignment.content %></p>
 
           <div class="dividewhite4"></div>
@@ -51,7 +56,7 @@
                 <div class="col-md-6">
                   <p>
                     <label for="">url</label>
-                    <%= f.text_field :url %>
+                    <%= f.url_field :url, placeholder: "http://를 추가해주세요." %>
                   </p>
                 </div>
               </div>
@@ -62,7 +67,7 @@
           
               <h4 class="font-accident-two-normal uppercase">나의 과제</h4>
               <% if @submission.image.exists? %>
-                <%= image_tag @submission.image.url %>
+                <%= image_tag @submission.image.url, class: "img-responsive"%>
               <% else %>
                 비어있음
               <% end %>
@@ -95,12 +100,17 @@
                           <%= f.text_field :url %>
                         </p>
                       </div>
+                      <div class="col-md-12">
+                        <label>내용</label>
+                        <%= f.test_area_field :content %>
+                      </div>
                     </div>
                     <div class="dividewhite2"></div>
                     <p><%= f.submit "과제 제출", class: "btn btn-lg btn-darker" %></p>
                   <% end %>
               <% else %>
           <% end %>
+        <% else %>
           <div class="row">
             <div class="col-md-12">
               <a href="<%= new_user_session_path%>" class="btn btn-lg btn-default pull-right">로그인 하세요</a>

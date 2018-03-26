@@ -1,5 +1,5 @@
 class AssignmentsController < ApplicationController
-  before_action :set_assignment, only: [:show, :edit, :update, :destroy, :submission,:destroy_submission,:edit_submission,:update_submission]
+  before_action :set_assignment, only: [:show, :edit, :update, :destroy, :submission,:submissions,:destroy_submission,:submissons,:edit_submission,:update_submission]
 
   # GET /assignments
   # GET /assignments.json
@@ -70,7 +70,7 @@ class AssignmentsController < ApplicationController
   end
   
   def destroy_submission
-    puts @assignment
+    puts @assignment.submissions
     @assignment.submissions.find_by(user_id: current_user.id).destroy
     respond_to do |format|
       format.html { redirect_to @assignment, notice: '과제가 성공적으로 삭제되었습니다.' }
@@ -84,6 +84,11 @@ class AssignmentsController < ApplicationController
     @submission.assignment = @assignment
     @submission.save
     redirect_back(fallback_location: root_path)
+  end
+  
+  def submissions
+    @users = User.where(grade: 6)
+    @submissions = @assignment.submissions
   end
   
   def edit_submission
@@ -112,7 +117,7 @@ class AssignmentsController < ApplicationController
     end
 
     def submission_params
-      params.require(:submission).permit(:image,:url)
+      params.require(:submission).permit(:image,:url,:submission)
 
     end
 
