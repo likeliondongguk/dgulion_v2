@@ -27,7 +27,12 @@
                               <!--    <a href="#!">교육팀</a>,</span>-->
                               <!--  <span>언젠가는 내겠지요.</span></div>-->
                           <% else %>
-                              <img src="<%= submission.image.url %>" class="img-responsive" alt="img11" />
+                              <% if submission.image.nil? %>
+                                <img src="<%= asset_path 'dgulion.png' %>" class="img-responsive" alt="img11" />
+                              <% else %>
+                                <img src="<%= submission.image.url %>" class="img-responsive" alt="img11" />
+                              <% end %>
+                              
                               <div class="post-entry">
                                 <p><%= submission.content %></p>
                               </div>

@@ -72,10 +72,10 @@
           <% elsif @flag == 1 %>
           
               <h4 class="font-accident-two-normal uppercase">나의 과제</h4>
-              <% if @submission.image.exists? %>
-                <%= image_tag @submission.image.url, class: "img-responsive"%>
+              <% if @submission.image.nil? %>
+                <img src="<%= asset_path 'dgulion.png' %>" class="img-responsive" alt="img11" />
               <% else %>
-                비어있음
+                <img src="<%= @submission.image.url %>" class="img-responsive" alt="img11" />
               <% end %>
               <article class="post">
                 <div class="dividewhite6"></div>
