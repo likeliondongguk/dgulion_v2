@@ -1,10 +1,9 @@
-ActiveAdmin.register Assignment do
+ActiveAdmin.register Scomment do
 menu parent: "과제관리"
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-permit_params :title, :content
-# permit_params :list, :of, :attributes, :on, :model
+permit_params :submission_id, :user_id, :body
 #
 # or
 #

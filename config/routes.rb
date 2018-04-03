@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   end
   get 'home/index'
   get 'home/wating'
+  post 'submission/:id/scomments' => 'assignments#scomments', as: "admin_submission_scomments"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

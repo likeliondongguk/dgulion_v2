@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180326185131) do
+ActiveRecord::Schema.define(version: 20180403114547) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -89,6 +89,16 @@ ActiveRecord::Schema.define(version: 20180326185131) do
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
   end
 
+  create_table "scomments", force: :cascade do |t|
+    t.integer "submission_id"
+    t.integer "user_id"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["submission_id"], name: "index_scomments_on_submission_id"
+    t.index ["user_id"], name: "index_scomments_on_user_id"
+  end
+
   create_table "submissions", force: :cascade do |t|
     t.integer "assignment_id"
     t.string "image_data"
@@ -97,6 +107,7 @@ ActiveRecord::Schema.define(version: 20180326185131) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.text "content"
+    t.string "title"
     t.index ["assignment_id"], name: "index_submissions_on_assignment_id"
     t.index ["user_id"], name: "index_submissions_on_user_id"
   end
@@ -117,7 +128,7 @@ ActiveRecord::Schema.define(version: 20180326185131) do
     t.string "name"
     t.integer "grade"
     t.text "desc"
-    t.string "image"
+    t.string "image_data"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["name"], name: "index_users_on_name"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

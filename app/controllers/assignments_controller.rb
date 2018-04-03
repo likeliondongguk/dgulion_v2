@@ -110,6 +110,17 @@ class AssignmentsController < ApplicationController
     end
   end
   
+  def scomments
+    submission = Submission.find params[:id]
+    @scomment = submission.scomments.build(scomment_params)
+    @scomment.user = current_user
+    if @scomment.save
+      redirect_back(fallback_location: root_path)
+    else
+      redirect_back(fallback_location: root_path)
+    end
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_assignment
@@ -119,6 +130,10 @@ class AssignmentsController < ApplicationController
     def submission_params
       params.require(:submission).permit(:image,:url,:content)
 
+    end
+    
+    def scomment_params
+      params.require(:scomment).permit(:body)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

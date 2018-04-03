@@ -9,7 +9,7 @@ ActiveAdmin.register User do
       column :email
       column :name
       column :image do |obj|
-        image_tag obj.image.url, class: "thumb" if obj.image?
+        image_tag obj.image.url, class: "thumb" if obj.image_data?
       end
       column :grade
       column :desc
@@ -25,7 +25,9 @@ ActiveAdmin.register User do
         f.input :email
         f.input :name
         f.input :grade
-        f.input :image
+        f.inputs "Upload" do
+          f.input :image, required: true, as: :file
+        end
         f.input :desc
         f.input :password
       end
