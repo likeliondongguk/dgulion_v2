@@ -39,16 +39,13 @@
                               <div class="post-meta">
                                 <span><%= submission.created_at%></span></div>
                               <div class="dividewhite2"></div>
-                              <a href="<%= submission.url%>" target="_blank" class="assignment_btn">
-                                <div class="post-more-link pull-center btn btn-gr">
-                                  url
-                                </div>
-                              </a>
-                              <a href="<%= submission_path(submission) %>" class="assignment_btn">
-                                <div class="post-more-link pull-center btn btn-gr">
-                                  보러가기
-                                </div>
-                              </a>
+                              <div class="btn-group" role="group"> 
+                                <a href="<%= submission.url%>" class="btn btn-primary pull-left" target="_blank">url</a>
+                                <%= link_to "보러가기", submission_path(submission), class: "btn btn-danger pull-left" %>
+                                <% if user_signed_in? && current_user.has_role?(:admin) %>
+                                  <a href="<%= admin_submission_path(submission) %>" target="_blank" class="btn btn-warning pull-left">어드민</a>
+                                <% end %>
+                              </div>
                               <div class="dividewhite1"></div>
                           <% end %>
                           
