@@ -25,9 +25,9 @@ ActiveAdmin.register User do
         f.input :email
         f.input :name
         f.input :grade
-        f.inputs "Upload" do
+        # f.inputs "Upload" do
           f.input :image, required: true, as: :file
-        end
+        # end
         f.input :desc
         f.input :password
       end

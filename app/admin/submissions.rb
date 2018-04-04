@@ -22,11 +22,17 @@ permit_params :assignment_id,:user_id,:content, :image_data, :url
       row :image do |ad|
         image_tag ad.image.url, class: "big" if ad.image_data?
       end
+      row :url do |url|
+        link_to '클릭하세여',url.url,target: "_blank"
+      end
     end
     panel '댓글들' do
       submission.scomments.each do |f|
         attributes_table_for f do
-          rows :user,:body
+          # rows :user,:body, "wow"
+          row f.user.name do
+            p f.body
+          end
         end
       end
     end
