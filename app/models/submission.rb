@@ -1,7 +1,7 @@
 class Submission < ApplicationRecord
   belongs_to :assignment
   belongs_to :user
-  has_many :scomments
+  has_many :scomments, dependent: :destroy
   # has_many
   include ImageUploader[:image]
   before_save :set_title

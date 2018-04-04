@@ -43,7 +43,54 @@
       </div>
       <div class="container-fluid nopadding">
         <% if user_signed_in? %>
-          <% if @flag == 0 %>
+          <% if @flag == 3 %>
+           <h4 class="font-accident-two-normal uppercase"><%= @submission.user.name %>의 과제</h4>
+              <% if @submission.image.nil? %>
+                <img src="<%= asset_path 'dgulion.png' %>" class="img-responsive" alt="img11" />
+              <% else %>
+                <img src="<%= @submission.image.url %>" class="img-responsive" alt="img11" />
+              <% end %>
+              <article class="post">
+                <div class="dividewhite6"></div>
+                <p><%= @submission.content %></p>
+                <div class="btn-group" role="group"> 
+                  <% unless @submission.url.nil? %>
+                    <a href="<%=@submission.url %>" class="btn btn-primary pull-left" target="_blank">url</a>
+                  <% end %>
+                </div>
+                 
+                <div class="dividewhite4"></div>
+                <hr>
+              </article>
+              <div id="comments">
+                <h4 class="font-accident-one-light uppercase"><%= @submission.scomments.count%> comments:</h4>
+                <!--<div class="dividewhite4"></div>-->
+                <ul class="media-list">
+                <% @submission.scomments.each do |c| %>
+                  <li class="media">
+                     <div class="media-left">
+                        <a href="#">
+                          <% if c.user.image.nil? %>
+                            <img src="<%= asset_path 'dgulion.png' %>" class="media-object" alt="img11" />
+                          <% else %>
+                            <img src="<%= c.user.image.url %>" class="media-object" alt="img11" />
+                          <% end %>
+                        </a>
+                     </div>
+                     <div class="media-body">
+                        <div class="post-data">
+                           <div class="post-date"><%= c.updated_at %></div>
+                           <div class="post-author"><a href="#"><%= c.user.name %></a></div>
+                        </div>
+                        <p><%= c.body %></p>
+                        <!--<p><a href="#" class="btn btn-gr btn-xs">Log In to Reply</a></p>-->
+                     </div>
+                  </li>
+                <% end %>
+               </ul>
+
+              </div>
+          <% elsif @flag == 0 %>
             <h4 class="font-accident-two-normal uppercase">과제 제출</h4>
             <%= form_for(@submission, url: submission_assignment_path) do |f| %>
               <div class="row">

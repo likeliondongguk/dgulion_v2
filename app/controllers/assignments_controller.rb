@@ -80,10 +80,18 @@ class AssignmentsController < ApplicationController
   
   def submission
     @submission = Submission.new(submission_params)
+    # @submission = Submission.new
     @submission.user = current_user
     @submission.assignment = @assignment
     @submission.save
     redirect_back(fallback_location: root_path)
+  end
+  
+  def show_submission
+    @submission = Submission.find(params[:id]) 
+    @assignment = @submission.assignment
+    @flag = 3
+    render 'show'
   end
   
   def submissions
@@ -121,6 +129,8 @@ class AssignmentsController < ApplicationController
     end
   end
   
+  
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_assignment
@@ -129,7 +139,6 @@ class AssignmentsController < ApplicationController
 
     def submission_params
       params.require(:submission).permit(:image,:url,:content)
-
     end
     
     def scomment_params

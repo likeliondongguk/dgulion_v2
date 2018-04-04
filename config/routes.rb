@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       patch 'update_submission', as: :update_submission, action: :update_submission
     end
   end
+  get 'submissions/:id' => 'assignments#show_submission', as: "submission"
   get 'home/index'
   get 'home/wating'
   post 'submission/:id/scomments' => 'assignments#scomments', as: "admin_submission_scomments"
