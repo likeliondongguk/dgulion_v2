@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-90057623-3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'UA-90057623-3');
+    </script>
     <title>DgulionVer2</title>
     <%= csrf_meta_tags %>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -12,10 +21,11 @@
     <meta name="description" content="동국대 멋사 official web site">
     <meta name="keywords" content="dgu lion likelion">
     <meta name="author" content="wonno">
-
+    
+    <%= favicon_link_tag %>
     <!-- Preloader -->
     <!-- <link href="/assets/custom/2.2.0/css/preloader.css" property='stylesheet' rel="stylesheet" type="text/css" media="screen"/> -->
-
+    
     <!-- CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" media="screen">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" property='stylesheet' rel="stylesheet" type="text/css" media="screen"/>
