@@ -3,10 +3,10 @@
 
   <div id="blog" class="inner-content">
 
-    <section id="page-title" class="inner-section ui-menu-color04">
+    <section id="page-title" class="inner-section ui-menu-color02">
       <div class="container-fluid nopadding">
-        <h2 class="font-accident-two-normal2 color05 uppercase" >강의 과제</h2>
-        <h4 class="font-accident-two-bold2 color05 uppercase subtitle">동대 멋사 교육팀이 준비중입니다.</h4>
+        <h2 class="font-accident-two-normal2 color05 uppercase" >동대 멋사 대나무숲</h2>
+        <h4 class="font-accident-two-bold2 color05 uppercase subtitle">동대 멋사 운영진이 열일중입니다.</h4>
       </div>
     </section>
 
@@ -15,7 +15,7 @@
       <div class="row masonry-row">
         <div class="container-fluid text-center">
           <div id="posts" class="row popup-container">
-            <% @assignments.each do |assignment| %>
+            <% @events.each do |event| %>
               <div class=" col-md-4 col-sm-6">
                 <div class="item-wrap curri">
                   <!-- <div class="check red">hot!</div> -->
@@ -23,21 +23,19 @@
                     <figcaption class="text-center">
                       <div class="post-header">
                         <h5>
-                          <a href="#"><%= assignment.title %></a>
+                          <a href="#"><%= event.title %></a>
                         </h5>
                       </div>
                       <div class="post-entry">
-                        <p><%#= assignment.content %></p>
+                        <p><%= event.content %></p>
                       </div>
-                      <div class="post-meta">
+                      <!-- <div class="post-meta">
                         <span>by
                           <a href="#!">교육팀</a>,</span>
-                        <span><%= assignment.created_at %></span></div>
-                      <div class="dividewhite2"></div>
+                        <span><%#= event.created_at %></span></div> -->
+                      <!-- <div class="dividewhite2"></div> -->
                       <div class="btn-group" role="group">
-                        <a href="<%= assignment_path(assignment)%>" class="btn btn-info pull-left">보러가기</a>
-                        <a href="<%=submissions_assignment_path(assignment)%>" class="btn btn-warning pull-left">훔쳐보기</a>
-                      </div>
+                        <a href="<%= event_path(event)%>" class="btn btn-info pull-left">한 마디!</a>                      </div>
                       <div class="dividewhite1"></div>
                     </figcaption>
                   </figure>
