@@ -24,6 +24,37 @@ ActiveAdmin.register Event do
     end
     f.actions
   end
+  show do
+    attributes_table do
+      row :title
+      row :image do |ad|
+        image_tag ad.image.url, class: "big" if ad.image_data?
+      end
+      row :content
+    end
+    panel '일반 댓글' do
+      event.ecomments.public_comments.each_with_index do |f,i|
+        attributes_table_for f do
+          # rows :body, :secret
+          row i+1 do
+            p f.body
+            # p f.secret
+          end
+        end
+      end
+    end
+    panel '비밀 댓글' do
+      event.ecomments.secret_comments.each_with_index do |f,i|
+        attributes_table_for f do
+          # rows :body, :secret
+          row i+1 do
+            p f.body
+            # p f.secret
+          end
+        end
+      end
+    end
+  end
 #
 # or
 #

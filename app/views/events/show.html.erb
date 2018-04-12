@@ -32,10 +32,23 @@
 
         </article>
         <div id="comments">
-          <h4 class="font-accident-one-light uppercase"><%= @event.ecomments.count%> 개의 글</h4>
+          <div class="row">
+            <div class="col-md-6">
+              <h4 class="font-accident-one-light uppercase"><%= @event.ecomments.public_comments.count%> 개의 공개글
+                <% if current_user.has_role? :admin %>
+                  (비밀글 : <%= @event.ecomments.secret_comments.count %>)
+                <% end %>
+              </h4>
+            </div>
+            <div class="col-md-6 pull-right">
+              <%= link_to '비밀 댓글 확인', admin_event_path(@event), class: "btn btn-info pull-right",target: "_blank" %>
+            </div>
+          </div>
+
+
           <!--<div class="dividewhite4"></div>-->
           <ul class="media-list">
-          <% @event.ecomments.each_with_index do |c,i| %>
+          <% @event.ecomments.public_comments.each_with_index do |c,i| %>
           <% unless i == @event.ecomments.count %>
             <li class="media">
                <div class="media-left">
@@ -67,9 +80,26 @@
                     <%= f.text_area :body, placeholder: "여러분의 생각을 적어주세요." %>
                   </p>
                 </div>
+
+
               </div>
               <div class="dividewhite2"></div>
-              <p><%= f.submit "제출", class: "btn btn-lg btn-darker" %></p>
+              <div class="row">
+                <div class="col-md-2">
+                  <div class="row">
+                    <div class="col-md-2">
+                      <%= f.check_box :secret  %>
+                    </div>
+                    <div class="col-md-10">
+                      <label for="ecomment_secret">비밀글</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-10">
+                  <%= f.submit "제출", class: "btn btn-darker" %>
+                </div>
+              </div>
+              <p></p>
             <% end %>
         <% else %>
           <div class="row">

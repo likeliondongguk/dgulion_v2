@@ -83,6 +83,6 @@ class EventsController < ApplicationController
     end
 
     def ecomment_params
-      params.require(:ecomment).permit(:body)
+      params.require(:ecomment).permit(:body,:secret)
     end
 end
