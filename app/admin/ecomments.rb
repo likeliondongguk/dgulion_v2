@@ -1,5 +1,6 @@
 ActiveAdmin.register Ecomment do
   menu parent: "대나무숲관리"
+  permit_params :body, :secret
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
