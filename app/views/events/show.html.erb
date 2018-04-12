@@ -32,10 +32,53 @@
 
         </article>
         <div id="comments">
+          <div class="container-fluid nopadding">
+            <% if user_signed_in? %>
+                <%= form_for(@ecomment, url: ecomment_event_path) do |f| %>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <p>
+                        <label>내용</label>
+                        <%= f.text_area :body, placeholder: "여러분의 생각을 적어주세요." %>
+                      </p>
+                    </div>
+
+
+                  </div>
+                  <div class="dividewhite2"></div>
+                  <div class="row">
+                    <div class="col-md-2 col-xs-6">
+                      <div class="row">
+                        <div class="col-md-2 col-xs-4">
+                          <%= f.check_box :secret ,class: "pull-right" %>
+                        </div>
+                        <div class="col-md-10 col-xs-8">
+                          <label for="ecomment_secret">비밀글</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-10 col-xs-6">
+                      <%= f.submit "제출", class: "btn btn-darker" %>
+                    </div>
+                  </div>
+                  <p></p>
+                <% end %>
+            <% else %>
+              <div class="row">
+                <div class="col-md-12 col-xs-6">
+                  <a href="<%= new_user_session_path%>" class="btn btn-lg btn-default pull-right">로그인 하세요</a>
+                </div>
+              </div>
+            <% end %>
+            <!-- <a href="" class="btn btn-lg btn-default pull-left">뒤로 가기</a>
+            <a href="" class="btn btn-lg btn-default pull-right">과제 제출</a> -->
+          </div>
+          <div class="dividewhite2"></div>
+          <hr>
           <div class="row">
             <div class="col-md-6">
               <h4 class="font-accident-one-light uppercase"><%= @event.ecomments.public_comments.count%> 개의 공개글
-                <% if current_user.has_role? :admin %>
+                <% if user_signed_in? && current_user.has_role? :admin %>
                   (비밀글 : <%= @event.ecomments.secret_comments.count %>)
                 <% end %>
               </h4>
@@ -70,47 +113,7 @@
 
         </div>
       </div>
-      <div class="container-fluid nopadding">
-        <% if user_signed_in? %>
-            <%= form_for(@ecomment, url: ecomment_event_path) do |f| %>
-              <div class="row">
-                <div class="col-md-12">
-                  <p>
-                    <label>내용</label>
-                    <%= f.text_area :body, placeholder: "여러분의 생각을 적어주세요." %>
-                  </p>
-                </div>
 
-
-              </div>
-              <div class="dividewhite2"></div>
-              <div class="row">
-                <div class="col-md-2">
-                  <div class="row">
-                    <div class="col-md-2">
-                      <%= f.check_box :secret  %>
-                    </div>
-                    <div class="col-md-10">
-                      <label for="ecomment_secret">비밀글</label>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-10">
-                  <%= f.submit "제출", class: "btn btn-darker" %>
-                </div>
-              </div>
-              <p></p>
-            <% end %>
-        <% else %>
-          <div class="row">
-            <div class="col-md-12">
-              <a href="<%= new_user_session_path%>" class="btn btn-lg btn-default pull-right">로그인 하세요</a>
-            </div>
-          </div>
-        <% end %>
-        <!-- <a href="" class="btn btn-lg btn-default pull-left">뒤로 가기</a>
-        <a href="" class="btn btn-lg btn-default pull-right">과제 제출</a> -->
-      </div>
     </section>
     <!-- /Blog Block -->
 
